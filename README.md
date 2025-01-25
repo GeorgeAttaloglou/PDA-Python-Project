@@ -8,6 +8,7 @@ Welcome to my first "project". It started as an assignment for one of my classes
 The assignment was fairly simple: **Create a command line PDA system in python**
 
 
-# Disclaimer
-
-As of 24/01/2025 i've decided to revisit this project in the downtime of my exams as a way to look into my past mistakes and improve upon them. Also its a good way to practice python overall imo.
+# TODO
+1. Translate to english
+2. Add license
+3. Implement main and check for __main__
