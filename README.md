@@ -9,6 +9,6 @@ The assignment was fairly simple: **Create a command line PDA system in python**
 
 
 # TODO
--[x] Translate to english
--[] Add license
--[] Implement main and check for __main__
+- [x] Translate to english
+- [ ] Add license
+- [ ] Implement main and check for __main__
