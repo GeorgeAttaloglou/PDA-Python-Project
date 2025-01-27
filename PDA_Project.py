@@ -4,14 +4,14 @@ order = []
 quantity = []
 
 def Add_Item():
-    print(" Επιλογή #0: Chicken Burger\n Επιλογή #1: Ham Burger\n Επιλογή #2: Green Burger\n Επιλογή #3: Club Sandwich\n Επιλογή #4: Σαλάτα ceasar's\n Επιλογή #5: Κινόα με Λαχανικά")
-    food_input = int(input("Εισάγετε τον αριθμό προϊόντος από το μενού: "))
+    print(" Option #0: Chicken Burger\n Option #1: Ham Burger\n Option #2: Green Burger\n Option #3: Club Sandwich\n Option #4: Caesar's Salad\n Option #5: Quinoa with Vegetables")
+    food_input = int(input("Enter the product number from the menu: "))
     
     if food_input < 0 or food_input > 5:
-        print("\nΗ επιλογή δεν υπάρχει, προσπαθήστε ξανά.\n")
+        print("\nThe option does not exist, please try again.\n")
         return
     
-    quantity.append(int(input("Εισάγετε ποσότητα: ")))
+    quantity.append(int(input("Enter quantity: ")))
     
     match food_input:
         case 0:
@@ -29,57 +29,57 @@ def Add_Item():
 
 
 def Delete_Item():
-    for i,Food in enumerate(order):
-        print(i + 1, Food.name, quantity[i], Food.price, Food.price*quantity[i])
+    for i, Food in enumerate(order):
+        print(i + 1, Food.name, quantity[i], Food.price, Food.price * quantity[i])
 
-    #διαγράφει το αντικείμενο που επιλέγει ο χρήστης
-    delete_input = int(input("Εισάγετε τον αριθμό προϊόντος που θέλετε να διαγράψετε: ")) - 1
+    # deletes the item selected by the user
+    delete_input = int(input("Enter the product number you want to delete: ")) - 1
     if delete_input < len(order):
         order.pop(delete_input)
         quantity.pop(delete_input)
     else:
-        print("Η επιλογή δεν υπάρχει στην παραγγελία.")
+        print("The option does not exist in the order.")
 
 
 while True:
-    print("Επιλογές: \n==========\n1. Προσθήκα προιόντος\n2. Εμφάνιση Παραγγελίας\n3. Αφαίρεση προϊόντος από την παραγγελία\n4. Πληρωμή")
+    print("Options: \n==========\n1. Add product\n2. Show Order\n3. Remove product from order\n4. Payment")
 
-    user_choice = (input("Εισάγετε επιλογή: "))
+    user_choice = input("Enter choice: ")
 
     while user_choice == "1":
 
         Add_Item()
 
-        repeat_input = input("Επιθυμείτε να εισάγετε άλλο? (y/n): ")
+        repeat_input = input("Do you want to add another? (y/n): ")
         if repeat_input.lower() == "y": continue
         if repeat_input.lower() == "n": break
-        else : print("Μη έγγυρη επιλογή"); break
+        else: print("Invalid choice"); break
 
     if user_choice == "2":
-        for i,Food in enumerate(order):
-            print(f"\n{i + 1}: {Food.name}, Ποσότητα: {quantity[i]}, Τιμή τεμαχίου: {Food.price}, Τελική αξία: {Food.price*quantity[i]}")
+        for i, Food in enumerate(order):
+            print(f"\n{i + 1}: {Food.name}, Quantity: {quantity[i]}, Unit Price: {Food.price}, Total Value: {Food.price * quantity[i]}")
 
     while user_choice == "3":
 
         Delete_Item()
 
-        repeat_input = input("Επιθυμείτε να διαγραψετε άλλο αντικείμενο? (y/n): ")
+        repeat_input = input("Do you want to delete another item? (y/n): ")
         if repeat_input == "y": continue
         if repeat_input == "n": break
-        else : print("Μη έγγυρη επιλογή"); break   
+        else: print("Invalid choice"); break   
 
     if user_choice == "4":
         total_owed = 0
 
-        payment = float(input("Εισάγετε το ποσό πληρωμής: "))
+        payment = float(input("Enter the payment amount: "))
         for i in range(len(order)):
             order_total = order[i].price * quantity[i]
             total_owed += order_total
             
-        change = payment-total_owed
+        change = payment - total_owed
         if change < 0:
-            print("Το ποσό πληρωμής είναι μικρότερο από το συνολικό ποσό της παραγγελίας.")
+            print("The payment amount is less than the total order amount.")
             continue
-        print("Τα ρέστα είναι: ",change)
+        print("The change is: ", change)
         
         break
